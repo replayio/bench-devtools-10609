@@ -25,8 +25,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Linked Issues
-        uses: kin/gh-action-get-linked-issues@v1.0
+        uses: hossainemruz/linked-issues@main
         id: linked-issues
+        with:
+          pr_url: ${{github.event.pull_request.html_url}}
+          format: IssueURL
     outputs:
       issues: ${{ steps.linked-issues.outputs.issues }}
 
