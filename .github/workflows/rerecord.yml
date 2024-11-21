@@ -27,7 +27,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Rerecord issue
-        uses: replayio/action-rerecord@v0.0.14
+        uses: replayio/action-rerecord@0.0.15
         with:
           api-key: ${{ env.RECORD_REPLAY_API_KEY }}
           public: true
