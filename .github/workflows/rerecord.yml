@@ -20,28 +20,14 @@ jobs:
           environment: ${{ fromJSON('["", "production"]')[github.ref == 'refs/heads/main'] }}
     outputs:
       url: ${{ steps.waitFor200.outputs.url }}
-  get-linked-issues:
-    name: Get Linked Issues
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Linked Issues
-        uses: kin/gh-action-get-linked-issues@v1.0
-        id: linked-issues
-    outputs:
-      issues: ${{ steps.linked-issues.outputs.issues }}
-
   rerecord-issue:
-    name: Rerecord the reported issue
+    name: Rerecord issue
     runs-on: ubuntu-latest
-    needs: [preview-branch, get-linked-issues]
+    needs: [preview-branch]
     timeout-minutes: 10
     steps:
-      - name: Print issue
-        run: |
-          echo "Preview branch URL: ${{ env.PREVIEW_BRANCH_URL }}"
-          echo "Issues: ${{ env.ISSUES }}"
-          echo "Issue title: ${{ github.event.issue.title }}"
-          echo "Issue body: ${{ github.event.issue.body }}"
-        env:
-          PREVIEW_BRANCH_URL: ${{ needs.preview-branch.outputs.url }}
-          ISSUES: ${{ needs.get-linked-issues.outputs.issues }}
+      - name: Rerecord issue
+        uses: replayio/action-rerecord@0.0.29
+        with:
+          api-key: ${{ env.RECORD_REPLAY_API_KEY }}
+          server-url: ${{ needs.preview-branch.outputs.url }}
