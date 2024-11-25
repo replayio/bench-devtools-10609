@@ -27,7 +27,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Rerecord issue
-        uses: replayio/action-rerecord@0.0.29
+        uses: replayio/action-rerecord@0.0.30
         with:
           api-key: ${{ env.RECORD_REPLAY_API_KEY }}
           server-url: ${{ needs.preview-branch.outputs.url }}
