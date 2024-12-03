@@ -15,7 +15,7 @@ interface DeclarationValueProps {
 
 class DeclarationValue extends React.PureComponent<DeclarationValueProps> {
   render() {
-    return this.props.values.map(v => {
+    const renderedValues = this.props.values.map(v => {
       if (typeof v === "string") {
         return v;
       }
@@ -46,6 +46,11 @@ class DeclarationValue extends React.PureComponent<DeclarationValueProps> {
 
       return value;
     });
+
+    return <>
+      <span style="color: darkred;">hello world!</span>
+      <>{renderedValues}</>
+    </>;
   }
 }
 
