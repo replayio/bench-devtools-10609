@@ -47,10 +47,12 @@ class DeclarationValue extends React.PureComponent<DeclarationValueProps> {
       return value;
     });
 
-    return <>
-      <span style="color: darkred;">hello world!</span>
-      <>{renderedValues}</>
-    </>;
+    return (
+      <>
+        <span style={{ color: 'darkred' }}>hello world!</span>
+        {renderedValues}
+      </>
+    );
   }
 }
 
