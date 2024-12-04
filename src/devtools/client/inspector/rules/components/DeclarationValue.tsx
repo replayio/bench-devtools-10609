@@ -15,8 +15,14 @@ interface DeclarationValueProps {
 
 class DeclarationValue extends React.PureComponent<DeclarationValueProps> {
   render() {
+    // Reproduction step Repro:DeclarationValue:
+    // the React element creation which triggered this render is at reproduction step Repro:MatchedSelector
     return this.props.values.map(v => {
       if (typeof v === "string") {
+        const importantMatch = v.match(/^(.*?)(!important)?$/);
+        if (importantMatch && importantMatch[2]) {
+          return [importantMatch[1], " ", importantMatch[2]];
+        }
         return v;
       }
 
