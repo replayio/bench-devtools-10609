@@ -26,11 +26,13 @@ export default function MatchedSelector(props: MatchedSelectorProps) {
       <span dir="ltr" className="rule-text theme-fg-color3">
         <div className="fix-get-selection">{selector.selector}</div>
         <div className="fix-get-selection computed-other-property-value theme-fg-color1">
+
           <DeclarationValue
             colorSpanClassName="computed-color"
             colorSwatchClassName="computed-colorswatch"
             fontFamilySpanClassName="computed-font-family"
             values={selector.parsedValue}
+            priority={selector.priority}
           />
         </div>
       </span>

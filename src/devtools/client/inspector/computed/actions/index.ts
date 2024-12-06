@@ -105,6 +105,7 @@ export async function createComputedProperties(
               cachedParsedProperties.set(combinedNameValue, parsedValue);
             }
 
+
             selectors.push({
               value: property.value,
               parsedValue,
@@ -112,6 +113,7 @@ export async function createComputedProperties(
               stylesheet,
               stylesheetURL,
               overridden: !!property.overridden,
+              priority: property.priority,
             });
           }
         }

@@ -73,6 +73,7 @@ export default function ComputedProperty(props: ComputedPropertyProps) {
         <div className="matchedselectors">
           {isExpanded
             ? property.selectors.map((selector, index) => (
+                // Reproduction step Repro:ComputedProperty:
                 <MatchedSelector key={index} selector={selector} />
               ))
             : null}
