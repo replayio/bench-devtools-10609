@@ -12,6 +12,7 @@ export interface MatchedSelectorState {
   overridden: boolean;
   stylesheet: string;
   stylesheetURL: string;
+  priority?: string;
 }
 
 export interface ComputedState {
